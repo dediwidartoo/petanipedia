@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Http\Controllers\Web;
+
+use DB;
+use App\Models\User;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class UserController extends Controller
+{
+    public function users()
+    {
+    	$users = User::IsNotAdmin()->paginate(10);
+
+
+    	/*dd($users);*/
+    	return view('admin.users.index',compact('users'));
+    }
+}
